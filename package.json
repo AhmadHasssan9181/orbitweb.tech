@@ -1,0 +1,16 @@
+{
+  "name": "orbitweb.tech",
+  "version": "1.0.0",
+  "description": "Official website for the Orbit Matrix project",
+  "scripts": {
+    "start": "node server.mjs"
+  },
+  "keywords": [
+    "matrix",
+    "orbit",
+    "e2ee",
+    "decentralized"
+  ],
+  "author": "Ahmad Hassan",
+  "license": "MIT"
+}
