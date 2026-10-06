@@ -1,0 +1,121 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 340" fill="none" class="matrixrtc-calling-svg">
+  <defs>
+    <linearGradient id="blurpleGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#5865F2"/>
+      <stop offset="100%" stop-color="#4752C4"/>
+    </linearGradient>
+    <linearGradient id="steelGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#5B8FC7"/>
+      <stop offset="100%" stop-color="#3B71AB"/>
+    </linearGradient>
+    <filter id="callShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#0F172A" flood-opacity="0.06"/>
+    </filter>
+  </defs>
+
+  <!-- Background grid -->
+  <g opacity="0.35">
+    <pattern id="callGrid" width="30" height="30" patternUnits="userSpaceOnUse">
+      <path d="M 30 0 L 0 0 0 30" fill="none" stroke="#E3E5E8" stroke-width="1"/>
+    </pattern>
+    <rect width="680" height="340" fill="url(#callGrid)"/>
+  </g>
+
+  <!-- Signal connection lines to central SFU -->
+  <path d="M 140 170 C 220 170, 260 170, 340 170" stroke="#5865F2" stroke-width="2" stroke-dasharray="5 5"/>
+  <path d="M 540 170 C 460 170, 420 170, 340 170" stroke="#5B8FC7" stroke-width="2" stroke-dasharray="5 5"/>
+  <path d="M 340 70 L 340 110" stroke="#5865F2" stroke-width="2" stroke-dasharray="4 4"/>
+
+  <!-- Pulsing audio waves from Alice -->
+  <circle cx="140" cy="170" r="38" fill="none" stroke="#5865F2" stroke-width="1.5" stroke-opacity="0.25">
+    <animate attributeName="r" values="24;46" dur="2s" repeatCount="indefinite"/>
+    <animate attributeName="stroke-opacity" values="0.6;0" dur="2s" repeatCount="indefinite"/>
+  </circle>
+
+  <!-- Pulsing audio waves from Bob -->
+  <circle cx="540" cy="170" r="38" fill="none" stroke="#5B8FC7" stroke-width="1.5" stroke-opacity="0.25">
+    <animate attributeName="r" values="24;46" dur="2s" begin="0.8s" repeatCount="indefinite"/>
+    <animate attributeName="stroke-opacity" values="0.6;0" dur="2s" begin="0.8s" repeatCount="indefinite"/>
+  </circle>
+
+  <!-- Central LiveKit SFU / MatrixRTC Hub -->
+  <g transform="translate(340, 170)" filter="url(#callShadow)">
+    <circle cx="0" cy="0" r="54" fill="#FFFFFF" stroke="#5865F2" stroke-width="2"/>
+    <circle cx="0" cy="0" r="44" fill="#EEF2FF"/>
+    
+    <!-- Central livekit antenna icon -->
+    <path d="M -12 -10 L 0 -22 L 12 -10" stroke="#5865F2" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="0" cy="-2" r="6" fill="#5865F2"/>
+    <path d="M -16 6 C -16 14, 16 14, 16 6" stroke="#5865F2" stroke-width="2" stroke-linecap="round"/>
+
+    <text x="0" y="24" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="800" fill="#3C45A5" text-anchor="middle">LIVEKIT SFU</text>
+    <text x="0" y="35" font-family="'JetBrains Mono', monospace" font-size="8" font-weight="600" fill="#5865F2" text-anchor="middle">MSC4195</text>
+  </g>
+
+  <!-- Top Badge: MatrixRTC Signaling via Matrix Rooms -->
+  <g transform="translate(340, 48)" filter="url(#callShadow)">
+    <rect x="-105" y="-16" width="210" height="32" rx="16" fill="#FFFFFF" stroke="#E3E5E8" stroke-width="1.5"/>
+    <circle cx="-85" cy="0" r="5" fill="#5865F2"/>
+    <text x="-70" y="4" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="700" fill="#060607">MatrixRTC Room Membership</text>
+  </g>
+
+  <!-- Left: Participant 1 (Alice - Orbit Web) -->
+  <g transform="translate(140, 170)" filter="url(#callShadow)">
+    <rect x="-85" y="-55" width="170" height="110" rx="14" fill="#FFFFFF" stroke="#E3E5E8" stroke-width="1.5"/>
+    <!-- Avatar & status -->
+    <circle cx="-50" cy="-22" r="16" fill="#EEF2FF"/>
+    <text x="-50" y="-17" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="800" fill="#5865F2" text-anchor="middle">A</text>
+    <circle cx="-38" cy="-10" r="4.5" fill="#23A55A" stroke="#FFFFFF" stroke-width="1.5"/>
+    
+    <text x="-26" y="-26" font-family="'Plus Jakarta Sans', sans-serif" font-size="13" font-weight="700" fill="#060607">Alice</text>
+    <text x="-26" y="-12" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="#5C5E66">Orbit Web</text>
+
+    <!-- Audio waveform bars -->
+    <g transform="translate(-65, 14)">
+      <rect x="0" y="6" width="4" height="16" rx="2" fill="#5865F2"/>
+      <rect x="8" y="0" width="4" height="28" rx="2" fill="#5865F2"/>
+      <rect x="16" y="8" width="4" height="12" rx="2" fill="#5865F2"/>
+      <rect x="24" y="2" width="4" height="24" rx="2" fill="#5865F2"/>
+      <rect x="32" y="10" width="4" height="8" rx="2" fill="#5865F2"/>
+      <rect x="40" y="4" width="4" height="20" rx="2" fill="#5865F2"/>
+      <rect x="48" y="12" width="4" height="4" rx="2" fill="#5865F2"/>
+    </g>
+    <!-- Latency pill -->
+    <rect x="10" y="14" width="60" height="20" rx="6" fill="#F2F3F5"/>
+    <text x="40" y="28" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="600" fill="#5865F2" text-anchor="middle">18ms</text>
+  </g>
+
+  <!-- Right: Participant 2 (Bob - Orbit Desktop) -->
+  <g transform="translate(540, 170)" filter="url(#callShadow)">
+    <rect x="-85" y="-55" width="170" height="110" rx="14" fill="#FFFFFF" stroke="#E3E5E8" stroke-width="1.5"/>
+    <!-- Avatar & status -->
+    <circle cx="-50" cy="-22" r="16" fill="#F0F4F8"/>
+    <text x="-50" y="-17" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="800" fill="#5B8FC7" text-anchor="middle">B</text>
+    <circle cx="-38" cy="-10" r="4.5" fill="#23A55A" stroke="#FFFFFF" stroke-width="1.5"/>
+    
+    <text x="-26" y="-26" font-family="'Plus Jakarta Sans', sans-serif" font-size="13" font-weight="700" fill="#060607">Bob</text>
+    <text x="-26" y="-12" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="#5C5E66">Orbit Desktop</text>
+
+    <!-- Audio waveform bars -->
+    <g transform="translate(-65, 14)">
+      <rect x="0" y="8" width="4" height="12" rx="2" fill="#5B8FC7"/>
+      <rect x="8" y="2" width="4" height="24" rx="2" fill="#5B8FC7"/>
+      <rect x="16" y="0" width="4" height="28" rx="2" fill="#5B8FC7"/>
+      <rect x="24" y="6" width="4" height="16" rx="2" fill="#5B8FC7"/>
+      <rect x="32" y="4" width="4" height="20" rx="2" fill="#5B8FC7"/>
+      <rect x="40" y="10" width="4" height="8" rx="2" fill="#5B8FC7"/>
+      <rect x="48" y="12" width="4" height="4" rx="2" fill="#5B8FC7"/>
+    </g>
+    <!-- Latency pill -->
+    <rect x="10" y="14" width="60" height="20" rx="6" fill="#F2F3F5"/>
+    <text x="40" y="28" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="600" fill="#5B8FC7" text-anchor="middle">24ms</text>
+  </g>
+
+  <!-- Bottom features bar -->
+  <g transform="translate(340, 290)">
+    <rect x="-170" y="-15" width="340" height="30" rx="15" fill="#F8FAFC" stroke="#E3E5E8" stroke-width="1"/>
+    <text x="0" y="4" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="600" fill="#4E5058" text-anchor="middle">
+      ✓ Spatial Opus Audio  •  ✓ 4K Screen Sharing  •  ✓ End-to-End Encrypted Media
+    </text>
+  </g>
+</svg>

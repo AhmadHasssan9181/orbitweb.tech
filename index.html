@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Orbit | Sovereign, Open Source & Decentralized Communications</title>
+  
+  <meta name="description" content="Orbit is a next-generation Matrix client ecosystem for Web, Android, and Desktop. End-to-end encrypted messaging with Megolm Rust cryptography, MatrixRTC & LiveKit calling, and sovereign digital identity.">
+  <meta name="keywords" content="Matrix, Orbit, Decentralized, End-to-end encryption, E2EE, Rust cryptography, MatrixRTC, LiveKit, Open Source, Digital Sovereignty, Compose Multiplatform">
+  
+  <!-- Open Graph / Social Meta -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://orbitweb.tech/">
+  <meta property="og:title" content="Orbit | Sovereign, Open Source & Decentralized Communications">
+  <meta property="og:description" content="Military-grade encrypted messaging, sovereign spaces, and low-latency MatrixRTC voice & video. Built on the open Matrix standard — zero corporate lock-in, zero telemetry.">
+  <meta property="og:site_name" content="Orbit">
+  
+  <!-- Twitter Cards -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Orbit | Sovereign, Open Source & Decentralized Communications">
+  <meta name="twitter:description" content="Military-grade encrypted messaging, sovereign spaces, and low-latency MatrixRTC voice & video on Matrix.">
+
+  <link rel="canonical" href="https://orbitweb.tech/">
+
+  <!-- Favicon SVG -->
+  <link rel="icon" type="image/svg+xml" href="assets/brand/orbit-logo.svg">
+
+  <!-- Google Fonts: Plus Jakarta Sans & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+
+  <!-- Ambient Glow Background -->
+  <div class="bg-mesh-glow" aria-hidden="true"></div>
+
+  <!-- Sticky Navigation Header -->
+  <header class="header-nav" id="main-header">
+    <div class="container nav-container">
+      <a href="#" class="brand-link" aria-label="Orbit Home">
+        <img src="assets/brand/orbit-logo.svg" alt="Orbit Logo" width="130" height="32">
+        <span class="brand-tag">Matrix 2.0</span>
+      </a>
+
+      <nav aria-label="Primary Navigation">
+        <ul class="nav-links">
+          <li><a href="#protocol" class="nav-link">Protocol</a></li>
+          <li><a href="#security" class="nav-link">Security & E2EE</a></li>
+          <li><a href="#voice-video" class="nav-link">MatrixRTC</a></li>
+          <li><a href="#comparison" class="nav-link">Comparison</a></li>
+          <li><a href="#self-hosting" class="nav-link">Self-Host</a></li>
+          <li><a href="#faq" class="nav-link">FAQ</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="https://github.com/AhmadHasssan9181/orbit-web" target="_blank" rel="noopener noreferrer" class="btn btn-outline" aria-label="Orbit Web on GitHub">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/>
+          </svg>
+          <span>GitHub</span>
+        </a>
+        <a href="#downloads" class="btn btn-primary">
+          <span>Launch Web App</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </a>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <button class="mobile-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile Nav Drawer -->
+  <div class="mobile-nav-drawer" role="dialog" aria-modal="true" aria-label="Mobile Navigation">
+    <ul class="mobile-nav-links">
+      <li><a href="#protocol">Protocol & Federation</a></li>
+      <li><a href="#security">Security & E2EE</a></li>
+      <li><a href="#voice-video">MatrixRTC Voice</a></li>
+      <li><a href="#comparison">Centralized vs Orbit</a></li>
+      <li><a href="#self-hosting">Self-Hosting</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="https://github.com/AhmadHasssan9181/orbit-web" target="_blank" rel="noopener noreferrer">GitHub Repository</a></li>
+    </ul>
+    <a href="#downloads" class="btn btn-primary" style="width: 100%;">Launch Web App</a>
+  </div>
+
+  <main>
+    <!-- HERO SECTION -->
+    <section class="section hero-section" id="hero">
+      <div class="container hero-grid">
+        <!-- Left: Copy & CTAs -->
+        <div class="hero-content">
+          <div class="badge-pill">
+            <span class="pulse-dot"></span>
+            <span>Matrix 2.0 • Decentralized & Sovereign</span>
+          </div>
+
+          <h1 class="hero-title">
+            We’re open & decentralized. So
+            <span class="drawline-wrap">
+              <span class="drawline-text">you’re sovereign</span>
+              <svg class="drawline-svg" viewBox="0 0 240 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <defs>
+                  <linearGradient id="heroUnderlineGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stop-color="#5865F2" stop-opacity="0.2"/>
+                    <stop offset="60%" stop-color="#5865F2"/>
+                    <stop offset="100%" stop-color="#5B8FC7"/>
+                  </linearGradient>
+                </defs>
+                <path class="drawline-path" d="M 4 18 C 65 6, 175 4, 236 12" stroke="url(#heroUnderlineGrad)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>.
+          </h1>
+
+          <p class="hero-subtitle">
+            Military-grade end-to-end encryption with Rust cryptography, sovereign server spaces, low-latency LiveKit voice & video, and Discord-familiar channels. Built on the open Matrix standard — zero corporate lock-in, zero telemetry.
+          </p>
+
+          <div class="hero-cta-group">
+            <div class="cta-item">
+              <a href="https://github.com/AhmadHasssan9181/orbit-web" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-lg">
+                <span>Launch Orbit Web</span>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                  <polyline points="15 3 21 3 21 9"></polyline>
+                  <line x1="10" y1="14" x2="21" y2="3"></line>
+                </svg>
+              </a>
+              <span class="cta-caption">Instant access in your browser</span>
+            </div>
+
+            <div class="cta-item">
+              <a href="#downloads" class="btn btn-outline btn-lg">
+                <span>Desktop & Mobile</span>
+              </a>
+              <span class="cta-caption">Android, Windows, macOS, Linux</span>
+            </div>
+          </div>
+
+          <!-- Hero Trust & Pillars -->
+          <div class="hero-trust-bar">
+            <div class="trust-item">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                <path d="m9 12 2 2 4-4"/>
+              </svg>
+              <span>Megolm Double Ratchet</span>
+            </div>
+            <div class="trust-item">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="10"/>
+                <path d="m9 12 2 2 4-4"/>
+              </svg>
+              <span>100% Open Source</span>
+            </div>
+            <div class="trust-item">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="2" y="2" width="20" height="8" rx="2" ry="2"/>
+                <rect x="2" y="14" width="20" height="8" rx="2" ry="2"/>
+                <line x1="6" y1="6" x2="6.01" y2="6"/>
+                <line x1="6" y1="18" x2="6.01" y2="18"/>
+              </svg>
+              <span>Zero-Knowledge Server</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Real Interactive UI Mockup Showcase -->
+        <div class="hero-mockup-wrapper">
+          <div class="app-window" role="region" aria-label="Orbit Client Interface Preview">
+            <!-- Window Top Bar -->
+            <div class="window-header">
+              <div class="window-dots">
+                <span class="dot dot-red"></span>
+                <span class="dot dot-yellow"></span>
+                <span class="dot dot-green"></span>
+              </div>
+              <div class="window-address">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="address-secure">
+                  <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                  <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                </svg>
+                <span>https://orbitweb.tech/app • m.megolm.v1</span>
+              </div>
+            </div>
+
+            <!-- Window App Body -->
+            <div class="window-body">
+              <!-- 1. Spaces Rail -->
+              <div class="spaces-rail" aria-label="Spaces Rail">
+                <div class="space-icon active" title="Orbit Core Community">O</div>
+                <div class="space-divider"></div>
+                <div class="space-icon secondary" title="Security & Cryptography">🛡️</div>
+                <div class="space-icon secondary" title="Dev Matrix">⚙️</div>
+                <div class="space-icon secondary" title="LiveKit Voice Guild">🔊</div>
+              </div>
+
+              <!-- 2. Channels Sidebar -->
+              <div class="channel-sidebar" aria-label="Channel List">
+                <div class="sidebar-title">Channels</div>
+                <ul class="channel-list">
+                  <li class="channel-item active">
+                    <span class="channel-hash">#</span>
+                    <span>announcements</span>
+                  </li>
+                  <li class="channel-item">
+                    <span class="channel-hash">#</span>
+                    <span>general-chat</span>
+                  </li>
+                  <li class="channel-item">
+                    <span class="channel-hash">#</span>
+                    <span>crypto-research</span>
+                  </li>
+                  <li class="channel-item voice">
+                    <span>🔊</span>
+                    <span>voice-lounge</span>
+                  </li>
+                </ul>
+
+                <div class="sidebar-title" style="margin-top: 10px;">Direct Messages</div>
+                <ul class="channel-list">
+                  <li class="channel-item">
+                    <span style="color: #23A55A;">●</span>
+                    <span>@alice:matrix.org</span>
+                  </li>
+                  <li class="channel-item">
+                    <span style="color: #80848E;">○</span>
+                    <span>@bob:orbitweb.tech</span>
+                  </li>
+                </ul>
+              </div>
+
+              <!-- 3. Chat Main Area -->
+              <div class="chat-main">
+                <div class="chat-header">
+                  <div class="chat-channel-meta">
+                    <span class="channel-hash">#</span>
+                    <span>announcements</span>
+                  </div>
+                  <div class="encrypted-pill">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                    </svg>
+                    <span>Megolm Verified</span>
+                  </div>
+                </div>
+
+                <div class="chat-timeline">
+                  <!-- Message 1 -->
+                  <div class="msg-row">
+                    <div class="msg-avatar avatar-blurple">A</div>
+                    <div class="msg-content">
+                      <div class="msg-header">
+                        <span class="msg-user">Alice</span>
+                        <span class="msg-time">10:42 AM</span>
+                      </div>
+                      <p class="msg-text">
+                        MatrixRTC call session verified with LiveKit SFU. All audio streams are end-to-end encrypted under <span class="code-pill">MSC4195</span>.
+                      </p>
+                      <div class="msg-reactions">
+                        <span class="react-pill active">🚀 18</span>
+                        <span class="react-pill">🛡️ 12</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Message 2 -->
+                  <div class="msg-row">
+                    <div class="msg-avatar avatar-steel">B</div>
+                    <div class="msg-content">
+                      <div class="msg-header">
+                        <span class="msg-user">Bob</span>
+                        <span class="msg-time">10:44 AM</span>
+                      </div>
+                      <p class="msg-text">
+                        Confirmed. Verified cross-signing key on my desktop device via SAS emoji match: 🛸 🔑 ⚡.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Floating Live Call Widget -->
+          <div class="floating-call-widget" aria-label="Active Call Status">
+            <div class="call-pulse-circle">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+              </svg>
+            </div>
+            <div>
+              <div class="call-meta-title">Voice Lounge (LiveKit SFU)</div>
+              <div class="call-meta-sub">3 peers • Opus 48kHz HD</div>
+            </div>
+            <div class="audio-bars-live" aria-hidden="true">
+              <span class="audio-bar"></span>
+              <span class="audio-bar"></span>
+              <span class="audio-bar"></span>
+              <span class="audio-bar"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CORE VALUE PILLARS (3-GRID) -->
+    <section class="section section-alt" id="pillars">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-eyebrow">Digital Sovereignty</div>
+          <h2 class="section-title">Built for uncompromising security, privacy, and freedom.</h2>
+          <p class="section-desc">
+            Unlike closed commercial silos that mine your metadata and lock your contacts, Orbit is built on open standards and cryptographic trust.
+          </p>
+        </div>
+
+        <div class="features-grid-3">
+          <!-- Pillar 1 -->
+          <div class="feature-card">
+            <div class="feature-icon-box">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                <rect x="9" y="9" width="6" height="6" rx="1"/>
+              </svg>
+            </div>
+            <h3 class="feature-card-title">Audited Rust Cryptography</h3>
+            <p class="feature-card-text">
+              Powered by matrix-sdk-crypto written in Rust. Megolm double-ratchet key exchanges ensure perfect forward secrecy and post-compromise security across all your devices.
+            </p>
+            <a href="#security" class="feature-card-link">
+              <span>Inspect cryptographic ratchet</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </a>
+          </div>
+
+          <!-- Pillar 2 -->
+          <div class="feature-card">
+            <div class="feature-icon-box indigo">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="18" cy="5" r="3"/>
+                <circle cx="6" cy="12" r="3"/>
+                <circle cx="18" cy="19" r="3"/>
+                <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/>
+                <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>
+              </svg>
+            </div>
+            <h3 class="feature-card-title">Decentralized Federation</h3>
+            <p class="feature-card-text">
+              Talk to anyone on the worldwide Matrix federation without creating accounts in proprietary walled gardens. Connect directly to over 120 million global Matrix participants.
+            </p>
+            <a href="#protocol" class="feature-card-link">
+              <span>View federation architecture</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </a>
+          </div>
+
+          <!-- Pillar 3 -->
+          <div class="feature-card">
+            <div class="feature-icon-box">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="2" width="20" height="8" rx="2" ry="2"/>
+                <rect x="2" y="14" width="20" height="8" rx="2" ry="2"/>
+                <line x1="6" y1="6" x2="6.01" y2="6"/>
+                <line x1="6" y1="18" x2="6.01" y2="18"/>
+              </svg>
+            </div>
+            <h3 class="feature-card-title">Sovereign & Air-Gappable</h3>
+            <p class="feature-card-text">
+              Run Orbit with your own self-hosted homeserver (Synapse, Dendrite, or Conduit). Full support for isolated, high-security, or air-gapped private deployments with zero cloud dependency.
+            </p>
+            <a href="#self-hosting" class="feature-card-link">
+              <span>Self-hosting guide</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FEDERATION & INTEROPERABILITY SECTION -->
+    <section class="section" id="protocol">
+      <div class="container">
+        <div class="showcase-split">
+          <!-- Left: Info -->
+          <div class="showcase-info">
+            <span class="showcase-info-tag">Open Standard Interoperability</span>
+            <h2 class="showcase-info-title">Break free from siloed networks. Communicate freely across borders.</h2>
+            <p class="showcase-info-desc">
+              Just like email lets @gmail talk to @outlook, the Matrix standard lets any homeserver talk to any other homeserver. Users on <code>orbitweb.tech</code> can securely chat, voice-call, and share files with users on <code>matrix.org</code> or private infrastructure.
+            </p>
+
+            <ul class="bullet-list">
+              <li class="bullet-item">
+                <span class="bullet-icon">✓</span>
+                <div><strong>No Single Vendor Monopoly:</strong> Switch homeservers or host your own without losing your identity or community.</div>
+              </li>
+              <li class="bullet-item">
+                <span class="bullet-icon">✓</span>
+                <div><strong>End-to-End Encrypted Federation:</strong> Messages are encrypted on the client device before touching any homeserver.</div>
+              </li>
+              <li class="bullet-item">
+                <span class="bullet-icon">✓</span>
+                <div><strong>Interoperable Spaces:</strong> Organize Discord-style hierarchical channel categories on top of <code>m.space.child</code>.</div>
+              </li>
+            </ul>
+
+            <a href="https://matrix.org/docs/spec/" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
+              <span>Read Matrix Protocol Specification</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+            </a>
+          </div>
+
+          <!-- Right: Vector Federation Mesh Diagram -->
+          <div class="showcase-visual">
+            <img src="assets/illustrations/federation-mesh.svg" alt="Decentralized Matrix Federation Mesh Network Diagram" loading="lazy">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECURITY & CRYPTOGRAPHY DEEP-DIVE -->
+    <section class="section section-alt" id="security">
+      <div class="container">
+        <div class="showcase-split reverse">
+          <!-- Left: Visual -->
+          <div class="showcase-visual">
+            <img src="assets/illustrations/cryptography-ratchet.svg" alt="Rust Cryptography Megolm Double Ratchet Architecture" loading="lazy">
+          </div>
+
+          <!-- Right: Content -->
+          <div class="showcase-info">
+            <span class="showcase-info-tag">Cryptographic Assurance</span>
+            <h2 class="showcase-info-title">Zero-knowledge server guarantees. Total privacy by design.</h2>
+            <p class="showcase-info-desc">
+              Your messages, files, and call signals never travel unencrypted. Orbit integrates an audited Rust cryptographic engine that generates unique session keys for every communication event.
+            </p>
+
+            <ul class="bullet-list">
+              <li class="bullet-item">
+                <span class="bullet-icon">✓</span>
+                <div><strong>AES-256-GCM + Curve25519:</strong> State-of-the-art authenticated encryption combined with elliptic-curve Diffie-Hellman key exchange.</div>
+              </li>
+              <li class="bullet-item">
+                <span class="bullet-icon">✓</span>
+                <div><strong>Cryptographic Device Verification:</strong> Eliminates Man-In-The-Middle attacks with Short Authentication String (SAS) emoji verification.</div>
+              </li>
+              <li class="bullet-item">
+                <span class="bullet-icon">✓</span>
+                <div><strong>Zero Data Retention:</strong> Encrypted blobs stored on homeservers are mathematically unreadable by server operators, ISPs, or state actors.</div>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Interactive Megolm E2EE Simulator -->
+        <div class="crypto-simulator-card" id="e2ee-simulator">
+          <div class="simulator-header">
+            <div>
+              <div class="sim-headline">Interactive Megolm Ratchet Simulator</div>
+              <p style="font-size: 14px; color: var(--text-muted); margin-top: 4px;">
+                Experience how Orbit's cryptographic layer transforms plaintext into authenticated ciphertext before transmission.
+              </p>
+            </div>
+            <div class="sim-status-badge">
+              <span class="pulse-dot"></span>
+              <span id="sim-ratchet-count">Ratchet Step #42</span>
+            </div>
+          </div>
+
+          <div class="simulator-grid">
+            <!-- Box 1: Plaintext Input -->
+            <div class="sim-box">
+              <div class="sim-box-label">1. Local Device (Plaintext)</div>
+              <input type="text" id="sim-input-msg" class="sim-input" value="Sovereign communications online." placeholder="Enter test message...">
+              <span style="font-size: 11px; color: var(--text-faint);">Plaintext never leaves RAM unencrypted</span>
+            </div>
+
+            <!-- Divider Arrow -->
+            <div class="sim-arrow-divider">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="9 18 15 12 9 6"></polyline>
+              </svg>
+            </div>
+
+            <!-- Box 2: Homeserver View (Ciphertext) -->
+            <div class="sim-box">
+              <div class="sim-box-label">2. Homeserver Relay (Ciphertext)</div>
+              <div id="sim-cipher-out" class="sim-output-box">m.megolm.v1:9f2c81:seq42:x8d1e</div>
+              <span style="font-size: 11px; color: #5865F2; font-weight: 600;">✓ Server reads only opaque ciphertext</span>
+            </div>
+
+            <!-- Divider Arrow -->
+            <div class="sim-arrow-divider">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="9 18 15 12 9 6"></polyline>
+              </svg>
+            </div>
+
+            <!-- Box 3: Recipient Decrypted Output -->
+            <div class="sim-box">
+              <div class="sim-box-label">3. Recipient Device (Decrypted)</div>
+              <div id="sim-decrypted-out" class="sim-output-box" style="background: #EEF2FF; color: #3C45A5; border: 1px solid #C7D2FE;">
+                Sovereign communications online.
+              </div>
+              <span style="font-size: 11px; color: #5865F2; font-weight: 600;">✓ Verified identity signature match</span>
+            </div>
+          </div>
+
+          <div class="sim-actions">
+            <button id="btn-run-sim" class="btn btn-primary" type="button">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/>
+              </svg>
+              <span>Step Cryptographic Ratchet</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MATRIXRTC & LIVEKIT VOICE/VIDEO SECTION -->
+    <section class="section" id="voice-video">
+      <div class="container">
+        <div class="showcase-split">
+          <div class="showcase-info">
+            <span class="showcase-info-tag">MatrixRTC & MSC4195</span>
+            <h2 class="showcase-info-title">Next-generation calling. Spatial audio & LiveKit SFU mesh.</h2>
+            <p class="showcase-info-desc">
+              MatrixRTC turns Matrix rooms into real-time voice, video, and screen-sharing stages. Leveraging MSC4195 token exchange with LiveKit Selective Forwarding Units (SFUs), Orbit provides low-latency group calls with zero proprietary vendor lock-in.
+            </p>
+
+            <ul class="bullet-list">
+              <li class="bullet-item">
+                <span class="bullet-icon">✓</span>
+                <div><strong>High-Definition Audio:</strong> Opus 48kHz spatial audio with active speaker detection and low CPU footprint.</div>
+              </li>
+              <li class="bullet-item">
+                <span class="bullet-icon">✓</span>
+                <div><strong>4K Screen Sharing:</strong> Crisp presentation streaming with native WebRTC hardware acceleration.</div>
+              </li>
+              <li class="bullet-item">
+                <span class="bullet-icon">✓</span>
+                <div><strong>No Central Recording:</strong> Media tracks flow securely without centralized call snooping or surveillance.</div>
+              </li>
+            </ul>
+          </div>
+
+          <div class="showcase-visual">
+            <img src="assets/illustrations/matrixrtc-calling.svg" alt="MatrixRTC and LiveKit Voice Calling Architecture" loading="lazy">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- COMPARISON TABLE SECTION: Centralized vs Orbit -->
+    <section class="section section-alt" id="comparison">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-eyebrow">Architectural Contrast</div>
+          <h2 class="section-title">Why choose Orbit over centralized proprietary platforms?</h2>
+          <p class="section-desc">
+            Compare Orbit's open Matrix architecture against walled gardens like Discord, Slack, and Microsoft Teams.
+          </p>
+        </div>
+
+        <div class="comparison-container">
+          <table class="comparison-table">
+            <thead>
+              <tr>
+                <th>Capability / Feature</th>
+                <th class="col-orbit">Orbit (Matrix Standard)</th>
+                <th>Discord</th>
+                <th>Slack / Teams</th>
+                <th>WhatsApp</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>End-to-End Encryption</strong></td>
+                <td class="col-orbit"><span class="pill-check">✓ Megolm Double Ratchet</span></td>
+                <td><span class="pill-cross">✗ None (Server inspects all)</span></td>
+                <td><span class="pill-cross">✗ None (Enterprise access)</span></td>
+                <td><span class="pill-check">✓ 1-to-1 only</span></td>
+              </tr>
+              <tr>
+                <td><strong>Data Ownership & Sovereignty</strong></td>
+                <td class="col-orbit"><span class="pill-check">✓ 100% User Owned</span></td>
+                <td><span class="pill-cross">✗ Proprietary Cloud</span></td>
+                <td><span class="pill-cross">✗ Proprietary Cloud</span></td>
+                <td><span class="pill-cross">✗ Meta Cloud</span></td>
+              </tr>
+              <tr>
+                <td><strong>Decentralized Federation</strong></td>
+                <td class="col-orbit"><span class="pill-check">✓ Cross-Server Matrix Mesh</span></td>
+                <td><span class="pill-cross">✗ Walled Garden</span></td>
+                <td><span class="pill-cross">✗ Walled Garden</span></td>
+                <td><span class="pill-cross">✗ Walled Garden</span></td>
+              </tr>
+              <tr>
+                <td><strong>Self-Hosting & Air-Gapped</strong></td>
+                <td class="col-orbit"><span class="pill-check">✓ Yes (Docker / Bare Metal)</span></td>
+                <td><span class="pill-cross">✗ Not Possible</span></td>
+                <td><span class="pill-cross">✗ Not Possible</span></td>
+                <td><span class="pill-cross">✗ Not Possible</span></td>
+              </tr>
+              <tr>
+                <td><strong>Code Auditing & Open Source</strong></td>
+                <td class="col-orbit"><span class="pill-check">✓ 100% Open Source</span></td>
+                <td><span class="pill-cross">✗ Closed Source</span></td>
+                <td><span class="pill-cross">✗ Closed Source</span></td>
+                <td><span class="pill-cross">✗ Closed Source</span></td>
+              </tr>
+              <tr>
+                <td><strong>Telemetry & User Ad Profiling</strong></td>
+                <td class="col-orbit"><span class="pill-check">✓ Zero Telemetry / No Ads</span></td>
+                <td><span class="pill-cross">✗ Targeted Ads & Tracking</span></td>
+                <td><span class="pill-cross">✗ Corporate Analytics</span></td>
+                <td><span class="pill-cross">✗ Meta Ad Ecosystem</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- SELF-HOSTING SECTION -->
+    <section class="section" id="self-hosting">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-eyebrow">Zero Cloud Lock-In</div>
+          <h2 class="section-title">Run your own sovereign Matrix homeserver in minutes.</h2>
+          <p class="section-desc">
+            Connect Orbit Web, Desktop, and Android to any Matrix homeserver: your own private Synapse, Dendrite, or Conduit instance, or any community server.
+          </p>
+        </div>
+
+        <div style="max-width: 840px; margin-inline: auto;">
+          <div class="code-preview-window">
+            <div class="code-header">
+              <span class="code-filename">docker-compose.yml • Sovereign Matrix Stack</span>
+              <button id="btn-copy-docker" class="btn-copy-code" type="button" aria-label="Copy Docker compose code">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                  <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                </svg>
+                <span>Copy YAML</span>
+              </button>
+            </div>
+            <pre class="code-body"><code id="docker-compose-code"><span class="code-keyword">version:</span> <span class="code-string">"3.8"</span>
+
+<span class="code-keyword">services:</span>
+  <span class="code-keyword">matrix-synapse:</span>
+    <span class="code-keyword">image:</span> <span class="code-string">matrixdotorg/synapse:latest</span>
+    <span class="code-keyword">container_name:</span> <span class="code-string">synapse</span>
+    <span class="code-keyword">restart:</span> <span class="code-string">unless-stopped</span>
+    <span class="code-keyword">environment:</span>
+      - <span class="code-string">SYNAPSE_SERVER_NAME=orbitweb.tech</span>
+      - <span class="code-string">SYNAPSE_REPORT_STATS=no</span>
+    <span class="code-keyword">volumes:</span>
+      - <span class="code-string">./synapse-data:/data</span>
+    <span class="code-keyword">ports:</span>
+      - <span class="code-string">"8008:8008"</span>
+
+  <span class="code-keyword">livekit-sfu:</span>
+    <span class="code-keyword">image:</span> <span class="code-string">livekit/livekit-server:latest</span>
+    <span class="code-keyword">container_name:</span> <span class="code-string">livekit-rtc</span>
+    <span class="code-keyword">restart:</span> <span class="code-string">unless-stopped</span>
+    <span class="code-keyword">ports:</span>
+      - <span class="code-string">"7880:7880"</span>
+      - <span class="code-string">"7881:7881"</span>
+      - <span class="code-string">"50000-50100:50000-50100/udp"</span></code></pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DOWNLOADS / ECOSYSTEM SECTION -->
+    <section class="section section-alt" id="downloads">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-eyebrow">Multiplatform Ecosystem</div>
+          <h2 class="section-title">One unified experience across every screen.</h2>
+          <p class="section-desc">
+            Choose your preferred platform or run Orbit across all of them with synchronized E2EE sessions.
+          </p>
+        </div>
+
+        <div class="features-grid-3">
+          <!-- Web Client -->
+          <div class="feature-card">
+            <div class="feature-icon-box">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="2" y1="12" x2="22" y2="12"></line>
+                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+              </svg>
+            </div>
+            <h3 class="feature-card-title">Orbit Web</h3>
+            <p class="feature-card-text">
+              Zero install required. React + Vite + Rust crypto with IndexedDB session persistence. Fast, responsive, and available in any modern browser.
+            </p>
+            <a href="https://github.com/AhmadHasssan9181/orbit-web" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="margin-top: auto;">
+              <span>Open in Browser</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+            </a>
+          </div>
+
+          <!-- Desktop Client -->
+          <div class="feature-card">
+            <div class="feature-icon-box indigo">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                <line x1="8" y1="21" x2="16" y2="21"></line>
+                <line x1="12" y1="17" x2="12" y2="21"></line>
+              </svg>
+            </div>
+            <h3 class="feature-card-title">Orbit Desktop</h3>
+            <p class="feature-card-text">
+              Compose Multiplatform desktop client for Windows, macOS, and Linux. Built-in native WebRTC runtime with screen-sharing and hardware acceleration.
+            </p>
+            <a href="https://github.com/AhmadHasssan9181/orbit" target="_blank" rel="noopener noreferrer" class="btn btn-outline" style="margin-top: auto;">
+              <span>Desktop Releases</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><polyline points="19 12 12 19 5 12"></polyline></svg>
+            </a>
+          </div>
+
+          <!-- Android Client -->
+          <div class="feature-card">
+            <div class="feature-icon-box">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
+                <line x1="12" y1="18" x2="12.01" y2="18"></line>
+              </svg>
+            </div>
+            <h3 class="feature-card-title">Orbit Android</h3>
+            <p class="feature-card-text">
+              Native Kotlin Multiplatform client. Background push notifications, Room KMP timeline caching, and encrypted voice calls on the go.
+            </p>
+            <a href="https://github.com/AhmadHasssan9181/orbit" target="_blank" rel="noopener noreferrer" class="btn btn-outline" style="margin-top: auto;">
+              <span>Get Android APK</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><polyline points="19 12 12 19 5 12"></polyline></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ ACCORDION SECTION -->
+    <section class="section" id="faq">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-eyebrow">Frequently Asked Questions</div>
+          <h2 class="section-title">Everything you need to know about Orbit.</h2>
+          <p class="section-desc">
+            Common questions regarding our Matrix integration, security audits, and self-hosting.
+          </p>
+        </div>
+
+        <div class="faq-grid">
+          <!-- Q1 -->
+          <div class="faq-item active">
+            <button class="faq-trigger" type="button" aria-expanded="true">
+              <span>Is Orbit a fork of Element or a completely custom client?</span>
+              <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+            <div class="faq-body">
+              <p class="faq-text">
+                Orbit is <strong>not</strong> a fork of Element. Orbit Web and Orbit Desktop are built from the ground up with custom, clean UI architecture and direct Matrix Client-Server API integration. Orbit is fully compatible with Element on the wire, meaning you can communicate with any Element user seamlessly.
+              </p>
+            </div>
+          </div>
+
+          <!-- Q2 -->
+          <div class="faq-item">
+            <button class="faq-trigger" type="button" aria-expanded="false">
+              <span>How does End-to-End Encryption work in Orbit?</span>
+              <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+            <div class="faq-body">
+              <p class="faq-text">
+                Orbit uses the audited Megolm double-ratchet cryptographic protocol via the official Rust <code>matrix-sdk-crypto</code>. Each session creates ephemeral Curve25519 keys, and each message rolls the ratchet forward. Even if a cryptographic key is compromised in the future, past messages remain completely undecipherable.
+              </p>
+            </div>
+          </div>
+
+          <!-- Q3 -->
+          <div class="faq-item">
+            <button class="faq-trigger" type="button" aria-expanded="false">
+              <span>Can I use my existing Matrix account on Orbit?</span>
+              <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+            <div class="faq-body">
+              <p class="faq-text">
+                Yes! You can log into Orbit using any existing Matrix account from matrix.org, your own private homeserver, or any public provider using your password, SSO (Google/GitLab/SAML), or an access token.
+              </p>
+            </div>
+          </div>
+
+          <!-- Q4 -->
+          <div class="faq-item">
+            <button class="faq-trigger" type="button" aria-expanded="false">
+              <span>How are voice and video calls handled?</span>
+              <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+            <div class="faq-body">
+              <p class="faq-text">
+                Orbit implements modern MatrixRTC calling with MSC4195 token exchange and LiveKit SFU integration. This allows multi-user voice lounges and video meetings with spatial audio and screen sharing, while maintaining decentralized membership signaling inside Matrix rooms.
+              </p>
+            </div>
+          </div>
+
+          <!-- Q5 -->
+          <div class="faq-item">
+            <button class="faq-trigger" type="button" aria-expanded="false">
+              <span>Is Orbit completely open source?</span>
+              <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+            <div class="faq-body">
+              <p class="faq-text">
+                Yes, Orbit is committed to transparency, security, and digital sovereignty. The full codebase, build pipelines, and protocols are open for public audit on GitHub.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CALL TO ACTION BANNER -->
+    <section class="container cta-banner-section">
+      <div class="cta-banner-card">
+        <h2 class="cta-banner-title">Take control of your communications today.</h2>
+        <p class="cta-banner-sub">
+          Experience military-grade encryption, Discord-familiar community servers, and true digital sovereignty on the open Matrix network.
+        </p>
+        <div class="cta-banner-buttons">
+          <a href="https://github.com/AhmadHasssan9181/orbit-web" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-lg">
+            <span>Launch Web App</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </a>
+          <a href="https://github.com/AhmadHasssan9181" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-lg" style="background: transparent; color: #FFFFFF; border-color: #475569;">
+            <span>Explore on GitHub</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div>
+          <img src="assets/brand/orbit-logo.svg" alt="Orbit" width="130" height="32">
+          <p class="footer-brand-bio">
+            Orbit is an open-source, decentralized Matrix communication platform offering sovereign, end-to-end encrypted messaging, voice, video, and screen sharing.
+          </p>
+        </div>
+
+        <div>
+          <h4 class="footer-heading">Protocol & Spec</h4>
+          <ul class="footer-links">
+            <li><a href="https://matrix.org/" target="_blank" rel="noopener noreferrer" class="footer-link">Matrix Standard</a></li>
+            <li><a href="https://spec.matrix.org/latest/" target="_blank" rel="noopener noreferrer" class="footer-link">Matrix Spec API</a></li>
+            <li><a href="https://github.com/matrix-org/matrix-rust-sdk" target="_blank" rel="noopener noreferrer" class="footer-link">Rust Crypto SDK</a></li>
+            <li><a href="https://github.com/matrix-org/matrix-spec-proposals/pull/4195" target="_blank" rel="noopener noreferrer" class="footer-link">MSC4195 MatrixRTC</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-heading">Ecosystem</h4>
+          <ul class="footer-links">
+            <li><a href="https://github.com/AhmadHasssan9181/orbit-web" target="_blank" rel="noopener noreferrer" class="footer-link">Orbit Web Client</a></li>
+            <li><a href="https://github.com/AhmadHasssan9181/orbit" target="_blank" rel="noopener noreferrer" class="footer-link">Orbit Android & Desktop</a></li>
+            <li><a href="#self-hosting" class="footer-link">Self-Host Synapse</a></li>
+            <li><a href="#e2ee-simulator" class="footer-link">E2EE Simulator</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-heading">Domain & Hosting</h4>
+          <ul class="footer-links">
+            <li><span style="font-family: var(--font-mono); font-size: 13px; color: var(--color-emerald); font-weight: 600;">orbitweb.tech</span></li>
+            <li><span style="font-size: 13px; color: var(--text-faint);">Hosted on GitHub Pages</span></li>
+            <li><span style="font-size: 13px; color: var(--text-faint);">Let's Encrypt SSL/TLS</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>
+          &copy; 2026 Orbit Project • Powered by the decentralized Matrix open standard.
+        </div>
+        <div class="footer-badges">
+          <span>Sovereign Identity</span>
+          <span>•</span>
+          <span>Zero Telemetry</span>
+          <span>•</span>
+          <span>Open Source</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Main JavaScript Bundle -->
+  <script src="scripts/main.js"></script>
+</body>
+</html>

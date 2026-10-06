@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 44" fill="none" class="orbit-brand-svg">
+  <defs>
+    <linearGradient id="orbitGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#5865F2"/>
+      <stop offset="60%" stop-color="#4752C4"/>
+      <stop offset="100%" stop-color="#5B8FC7"/>
+    </linearGradient>
+    <linearGradient id="ringGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#5865F2" stop-opacity="0.25"/>
+      <stop offset="50%" stop-color="#5865F2"/>
+      <stop offset="100%" stop-color="#5B8FC7"/>
+    </linearGradient>
+    <filter id="coreGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+  </defs>
+
+  <!-- Logo Mark -->
+  <g transform="translate(6, 6)">
+    <!-- Back orbit ring segment -->
+    <ellipse cx="16" cy="16" rx="16" ry="6.5" transform="rotate(-28 16 16)" stroke="url(#ringGrad)" stroke-width="2.5" stroke-dasharray="24 16" fill="none"/>
+    
+    <!-- Central Sphere / Core -->
+    <circle cx="16" cy="16" r="9" fill="url(#orbitGrad)" filter="url(#coreGlow)"/>
+    <circle cx="14" cy="13.5" r="3" fill="#FFFFFF" fill-opacity="0.5"/>
+    
+    <!-- Front orbit ring segment with satellite pulse -->
+    <ellipse cx="16" cy="16" rx="16" ry="6.5" transform="rotate(-28 16 16)" stroke="url(#ringGrad)" stroke-width="2.5" stroke-dasharray="32 60" fill="none"/>
+    <circle cx="28.5" cy="10" r="3" fill="#5865F2"/>
+    <circle cx="28.5" cy="10" r="5" stroke="#5865F2" stroke-width="1" stroke-opacity="0.4"/>
+  </g>
+
+  <!-- Wordmark -->
+  <text x="50" y="29" font-family="'Plus Jakarta Sans', 'Inter', sans-serif" font-size="24" font-weight="800" letter-spacing="-0.04em" fill="#060607">
+    Orbit
+  </text>
+  <circle cx="112" cy="27" r="3" fill="#5865F2"/>
+</svg>

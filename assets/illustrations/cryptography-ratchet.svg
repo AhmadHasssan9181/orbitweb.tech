@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 340" fill="none" class="cryptography-ratchet-svg">
+  <defs>
+    <linearGradient id="blurpleGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#5865F2"/>
+      <stop offset="100%" stop-color="#4752C4"/>
+    </linearGradient>
+    <linearGradient id="rustGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#5865F2"/>
+      <stop offset="100%" stop-color="#3C45A5"/>
+    </linearGradient>
+    <linearGradient id="cipherGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#5B8FC7"/>
+      <stop offset="100%" stop-color="#4752C4"/>
+    </linearGradient>
+    <filter id="boxShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="6" stdDeviation="10" flood-color="#0F172A" flood-opacity="0.05"/>
+    </filter>
+  </defs>
+
+  <!-- Flow connecting arrows -->
+  <path d="M 180 170 L 230 170" stroke="#5865F2" stroke-width="2" stroke-dasharray="4 4"/>
+  <polygon points="234,170 226,166 226,174" fill="#5865F2"/>
+
+  <path d="M 440 170 L 490 170" stroke="#5B8FC7" stroke-width="2" stroke-dasharray="4 4"/>
+  <polygon points="494,170 486,166 486,174" fill="#5B8FC7"/>
+
+  <!-- Step 1: Client Device / Plaintext -->
+  <g transform="translate(30, 80)" filter="url(#boxShadow)">
+    <rect width="150" height="180" rx="14" fill="#FFFFFF" stroke="#E3E5E8" stroke-width="1.5"/>
+    <!-- Header -->
+    <rect width="150" height="40" rx="14" fill="#F8FAFC"/>
+    <path d="M 0 26 L 150 26" stroke="#E3E5E8" stroke-width="1"/>
+    <circle cx="22" cy="20" r="4" fill="#5865F2"/>
+    <text x="34" y="24" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="700" fill="#060607">Local Client</text>
+
+    <!-- Plaintext content -->
+    <text x="16" y="65" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="600" fill="#64748B">PLAINTEXT PAYLOAD</text>
+    <rect x="16" y="75" width="118" height="48" rx="8" fill="#F1F5F9"/>
+    <text x="24" y="93" font-family="'JetBrains Mono', monospace" font-size="11" fill="#060607">"Deploying"</text>
+    <text x="24" y="110" font-family="'JetBrains Mono', monospace" font-size="11" fill="#060607">"zero-trust..."</text>
+
+    <!-- Badge -->
+    <rect x="16" y="136" width="118" height="26" rx="6" fill="#EEF2FF"/>
+    <text x="75" y="153" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="700" fill="#4752C4" text-anchor="middle">In-Memory Only</text>
+  </g>
+
+  <!-- Step 2: The Rust Cryptographic Engine & Megolm Ratchet (Center) -->
+  <g transform="translate(240, 40)" filter="url(#boxShadow)">
+    <rect width="200" height="260" rx="16" fill="#FFFFFF" stroke="#5865F2" stroke-width="2"/>
+    
+    <!-- Header badge -->
+    <rect width="200" height="46" rx="16" fill="#EEF2FF"/>
+    <path d="M 0 32 L 200 32" stroke="#E0E7FF" stroke-width="1"/>
+    <circle cx="26" cy="23" r="8" fill="url(#blurpleGrad)"/>
+    <path d="M 23 20 L 29 23 L 23 26 Z" fill="#FFFFFF"/>
+    <text x="42" y="27" font-family="'Plus Jakarta Sans', sans-serif" font-size="13" font-weight="800" fill="#3C45A5">Rust Cryptography</text>
+
+    <!-- Ratchet Mechanism Visualization -->
+    <g transform="translate(20, 60)">
+      <rect width="160" height="52" rx="10" fill="#F8FAFC" stroke="#E3E5E8" stroke-width="1"/>
+      <text x="14" y="22" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="700" fill="#060607">Megolm Double Ratchet</text>
+      <text x="14" y="38" font-family="'JetBrains Mono', monospace" font-size="10" fill="#5865F2">K_n = HMAC(K_{n-1})</text>
+      <circle cx="142" cy="26" r="6" fill="#EEF2FF" stroke="#5865F2" stroke-width="1.5"/>
+    </g>
+
+    <!-- Cipher specs -->
+    <g transform="translate(20, 124)">
+      <rect width="160" height="66" rx="10" fill="#F0F4F8" stroke="#DCE4EC" stroke-width="1"/>
+      <text x="14" y="20" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="700" fill="#3B71AB">Encryption Suite</text>
+      <text x="14" y="38" font-family="'JetBrains Mono', monospace" font-size="10" fill="#2E5C8D">• AES-256-GCM</text>
+      <text x="14" y="54" font-family="'JetBrains Mono', monospace" font-size="10" fill="#2E5C8D">• Curve25519 ECDH</text>
+    </g>
+
+    <!-- Forward Secrecy Guarantee -->
+    <g transform="translate(20, 202)">
+      <rect width="160" height="38" rx="8" fill="#EEF2FF" stroke="#C7D2FE" stroke-width="1"/>
+      <!-- Shield check -->
+      <path d="M 26 21 L 22 17 L 23.5 15.5 L 26 18 L 31.5 12.5 L 33 14 Z" fill="#4752C4"/>
+      <text x="40" y="23" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="700" fill="#3C45A5">Forward Secrecy</text>
+    </g>
+  </g>
+
+  <!-- Step 3: Homeserver (Zero-Knowledge Ciphertext) -->
+  <g transform="translate(500, 80)" filter="url(#boxShadow)">
+    <rect width="150" height="180" rx="14" fill="#FFFFFF" stroke="#E3E5E8" stroke-width="1.5"/>
+    <rect width="150" height="40" rx="14" fill="#F8FAFC"/>
+    <path d="M 0 26 L 150 26" stroke="#E3E5E8" stroke-width="1"/>
+    <!-- Lock indicator -->
+    <circle cx="22" cy="20" r="4" fill="#5865F2"/>
+    <text x="34" y="24" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="700" fill="#060607">Homeserver</text>
+
+    <!-- Ciphertext content -->
+    <text x="16" y="65" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="600" fill="#64748B">ENCRYPTED BLOB</text>
+    <rect x="16" y="75" width="118" height="48" rx="8" fill="#1E1F22"/>
+    <text x="24" y="93" font-family="'JetBrains Mono', monospace" font-size="10" fill="#5B8FC7">7x8vA9...kM1z</text>
+    <text x="24" y="110" font-family="'JetBrains Mono', monospace" font-size="10" fill="#949BA4">ciphertext</text>
+
+    <!-- Zero knowledge badge -->
+    <rect x="16" y="136" width="118" height="26" rx="6" fill="#F2F3F5"/>
+    <text x="75" y="153" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="700" fill="#4E5058" text-anchor="middle">Zero-Knowledge</text>
+  </g>
+</svg>
