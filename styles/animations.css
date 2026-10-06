@@ -29,16 +29,16 @@
 .section-alt::before, .section-alt::after {
   content: ""; position: absolute; border-radius: 50%; pointer-events: none; filter: blur(60px); z-index: 0;
 }
-.section-alt::before { width: 340px; height: 340px; top: -80px; left: -80px; background: rgba(88,101,242,0.13); animation: drift 14s ease-in-out infinite alternate; }
-.section-alt::after { width: 300px; height: 300px; bottom: -90px; right: -60px; background: rgba(91,143,199,0.16); animation: drift 18s ease-in-out infinite alternate-reverse; }
+.section-alt::before { width: 340px; height: 340px; top: -80px; left: -80px; background: rgba(49, 46, 129, 0.05); animation: drift 14s ease-in-out infinite alternate; }
+.section-alt::after { width: 300px; height: 300px; bottom: -90px; right: -60px; background: rgba(37, 99, 235, 0.04); animation: drift 18s ease-in-out infinite alternate-reverse; }
 .section-alt > .container { position: relative; z-index: 1; }
 @keyframes drift { from { transform: translate(0,0) scale(1); } to { transform: translate(60px, 40px) scale(1.2); } }
 
 /* 4. CTA button breathing glow ------------------------------------- */
-.hero-cta-group .btn-primary { animation: breathe 3.2s ease-in-out infinite; }
+.hero-cta-group .btn-primary { animation: breathe 3.6s ease-in-out infinite; }
 @keyframes breathe {
-  0%,100% { box-shadow: 0 6px 20px -4px rgba(88,101,242,0.5), 0 0 0 0 rgba(88,101,242,0.35); }
-  50% { box-shadow: 0 10px 28px -4px rgba(88,101,242,0.6), 0 0 0 10px rgba(88,101,242,0); }
+  0%,100% { box-shadow: inset 0 1px 0 rgba(255,255,255,0.18), 0 2px 4px rgba(11, 15, 25, 0.08), 0 8px 22px -4px rgba(11, 15, 25, 0.22), 0 0 0 0 rgba(49, 46, 129, 0.15); }
+  50% { box-shadow: inset 0 1px 0 rgba(255,255,255,0.22), 0 4px 8px rgba(11, 15, 25, 0.12), 0 12px 26px -4px rgba(11, 15, 25, 0.28), 0 0 0 8px rgba(49, 46, 129, 0); }
 }
 
 /* 5. Mockup chat: messages arrive one by one ----------------------- */
@@ -70,7 +70,7 @@
 
 /* 6. Live status dots ---------------------------------------------- */
 .space-icon.active { animation: glowPulse 3s ease-in-out infinite; }
-@keyframes glowPulse { 0%,100% { box-shadow: 0 2px 8px rgba(88,101,242,0.35); } 50% { box-shadow: 0 2px 18px rgba(88,101,242,0.7); } }
+@keyframes glowPulse { 0%,100% { box-shadow: 0 2px 8px rgba(49,46,129,0.25); } 50% { box-shadow: 0 2px 18px rgba(49,46,129,0.5); } }
 
 /* 7. Bullets pop in once their list is visible --------------------- */
 .bullet-list .bullet-item { opacity: 0; transform: translateX(-14px); transition: opacity 0.6s var(--ease-out), transform 0.6s var(--ease-out); }
@@ -96,7 +96,7 @@
 
 /* 9. Simulator: scramble flash + arrows flowing -------------------- */
 .sim-output-box.scrambling { animation: flash 0.35s ease; }
-@keyframes flash { 0% { box-shadow: 0 0 0 0 rgba(88,101,242,0.7); } 100% { box-shadow: 0 0 0 14px rgba(88,101,242,0); } }
+@keyframes flash { 0% { box-shadow: 0 0 0 0 rgba(49,46,129,0.5); } 100% { box-shadow: 0 0 0 14px rgba(49,46,129,0); } }
 .sim-arrow-divider svg { animation: nudge 1.4s ease-in-out infinite; }
 @keyframes nudge { 0%,100% { transform: translateX(-3px); opacity: 0.5; } 50% { transform: translateX(4px); opacity: 1; } }
 
@@ -109,7 +109,7 @@
 /* 11. Cursor glow --------------------------------------------------- */
 .cursor-glow {
   position: fixed; top: 0; left: 0; width: 420px; height: 420px; margin: -210px 0 0 -210px; border-radius: 50%;
-  background: radial-gradient(circle, rgba(88,101,242,0.13), transparent 65%);
+  background: radial-gradient(circle, rgba(49,46,129,0.06), transparent 65%);
   pointer-events: none; z-index: 0; transition: opacity 0.4s; opacity: 0; will-change: transform;
 }
 

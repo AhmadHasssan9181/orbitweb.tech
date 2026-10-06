@@ -1,52 +1,55 @@
 /* ==========================================================================
    ORBITWEB.TECH - Orbit Design System (Light Theme)
-   True Orbit Theme: Brand Blurple (#5865F2), Steel Blue (#5B8FC7), Sage (#23A55A)
+   Executive Elegant Palette: Royal Indigo (#312E81), Obsidian (#0B0F19), Sapphire (#2563EB)
    ========================================================================== */
 
 :root {
-  /* Brand Palette (Ported from Orbit Desktop Iris500 ramp & tokens.ts) */
-  --color-primary: #5865F2;
-  --color-primary-hover: #4752C4;
-  --color-primary-active: #3C45A5;
+  /* Brand Palette (Executive Elegant Indigo & Sapphire) */
+  --color-primary: #3730A3;
+  --color-primary-hover: #312E81;
+  --color-primary-active: #1E1B4B;
   --color-primary-light: #EEF2FF;
-  --color-primary-subtle: rgba(88, 101, 242, 0.12);
+  --color-primary-subtle: rgba(55, 48, 163, 0.08);
   --color-primary-border: #C7D2FE;
   
-  --color-steel: #5B8FC7;
-  --color-steel-light: #F0F4F8;
-  --color-steel-border: #D0DFEE;
+  --color-steel: #4F46E5;
+  --color-steel-light: #F5F7FF;
+  --color-steel-border: #E0E7FF;
 
-  /* Semantic Status (Desktop Muted Ramp: Sage / Amber / Rust) */
-  --color-status-online: #23A55A;
-  --color-status-online-light: #EBF8F1;
-  --color-status-idle: #F0B232;
-  --color-status-dnd: #F23F43;
-  --color-status-offline: #80848E;
+  --color-accent: #2563EB;
+  --color-accent-subtle: rgba(37, 99, 235, 0.08);
 
-  /* Neutrals (Orbit Light Theme Ramp: E3E5E8 / F2F3F5 / EBEDEF) */
-  --bg-page: #FFFFFF;
-  --bg-subtle: #F2F3F5;
+  /* Semantic Status (Refined Jewel Tones) */
+  --color-status-online: #16A34A;
+  --color-status-online-light: #F0FDF4;
+  --color-status-idle: #D97706;
+  --color-status-dnd: #DC2626;
+  --color-status-offline: #94A3B8;
+
+  /* Neutrals (Crisp Luxury Alabaster & Porcelain) */
+  --bg-page: #FCFCFD;
+  --bg-subtle: #F6F7FA;
   --bg-card: #FFFFFF;
-  --bg-card-hover: #F8F9FA;
-  --bg-servers: #E3E5E8;
-  --bg-secondary: #EBEDEF;
+  --bg-card-hover: #FAFAFC;
+  --bg-servers: #18181B;
+  --bg-secondary: #F1F3F7;
 
-  --text-main: #060607;
-  --text-normal: #313338;
-  --text-muted: #4E5058;
-  --text-subtle: #5C5E66;
-  --text-faint: #80848E;
+  --text-main: #0B0F19;
+  --text-normal: #1E293B;
+  --text-muted: #475569;
+  --text-subtle: #64748B;
+  --text-faint: #94A3B8;
 
-  --border-subtle: #E3E5E8;
-  --border-strong: #D1D5DB;
-  --border-accent: rgba(88, 101, 242, 0.3);
+  --border-subtle: #E2E8F0;
+  --border-strong: #CBD5E1;
+  --border-accent: rgba(55, 48, 163, 0.22);
 
-  /* Shadows */
-  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -2px rgba(0, 0, 0, 0.04);
-  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.03);
-  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.03);
-  --shadow-glow: 0 0 28px -4px rgba(88, 101, 242, 0.24);
+  /* Shadows (Refined Soft Obsidian Ambient) */
+  --shadow-sm: 0 1px 2px 0 rgba(15, 23, 42, 0.04);
+  --shadow-md: 0 4px 6px -1px rgba(15, 23, 42, 0.06), 0 2px 4px -2px rgba(15, 23, 42, 0.03);
+  --shadow-lg: 0 10px 15px -3px rgba(15, 23, 42, 0.07), 0 4px 6px -4px rgba(15, 23, 42, 0.03);
+  --shadow-xl: 0 20px 25px -5px rgba(15, 23, 42, 0.07), 0 8px 10px -6px rgba(15, 23, 42, 0.02);
+  --shadow-glow: 0 0 32px -6px rgba(55, 48, 163, 0.20);
 
   /* Layout */
   --max-width: 1220px;
@@ -84,7 +87,7 @@ body {
   overflow-x: hidden;
 }
 
-/* Background Subtle Canvas Noise/Gradient in Orbit Blurple & Steel */
+/* Background Subtle Canvas Noise/Gradient in Royal Indigo & Sapphire */
 .bg-mesh-glow {
   position: absolute;
   top: 0;
@@ -92,9 +95,9 @@ body {
   right: 0;
   height: 820px;
   background: 
-    radial-gradient(circle at 18% 12%, rgba(88, 101, 242, 0.08) 0%, transparent 45%),
-    radial-gradient(circle at 82% 16%, rgba(91, 143, 199, 0.09) 0%, transparent 45%),
-    radial-gradient(circle at 50% 38%, rgba(88, 101, 242, 0.04) 0%, transparent 60%);
+    radial-gradient(circle at 18% 12%, rgba(49, 46, 129, 0.06) 0%, transparent 45%),
+    radial-gradient(circle at 82% 16%, rgba(37, 99, 235, 0.05) 0%, transparent 45%),
+    radial-gradient(circle at 50% 38%, rgba(49, 46, 129, 0.03) 0%, transparent 60%);
   pointer-events: none;
   z-index: -1;
 }
@@ -214,15 +217,21 @@ body {
 }
 
 .btn-primary {
-  background: var(--color-primary);
+  background: linear-gradient(180deg, #181B26 0%, #0B0F19 100%);
   color: #FFFFFF;
-  border: 1px solid transparent;
-  box-shadow: 0 2px 10px rgba(88, 101, 242, 0.28);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow: 
+    inset 0 1px 0 rgba(255, 255, 255, 0.18),
+    0 2px 4px rgba(11, 15, 25, 0.08),
+    0 8px 20px -4px rgba(11, 15, 25, 0.22);
 }
 
 .btn-primary:hover {
-  background: var(--color-primary-hover);
-  box-shadow: 0 4px 18px rgba(88, 101, 242, 0.40);
+  background: linear-gradient(180deg, #252A3B 0%, #111523 100%);
+  box-shadow: 
+    inset 0 1px 0 rgba(255, 255, 255, 0.25),
+    0 4px 10px rgba(11, 15, 25, 0.12),
+    0 12px 26px -4px rgba(11, 15, 25, 0.32);
   transform: translateY(-1px);
 }
 
@@ -639,7 +648,7 @@ body {
   flex-shrink: 0;
 }
 
-.avatar-blurple { background: linear-gradient(135deg, #5865F2, #4752C4); }
+.avatar-blurple { background: linear-gradient(135deg, #312E81, #1E1B4B); }
 .avatar-steel { background: linear-gradient(135deg, #5B8FC7, #3B71AB); }
 
 .msg-content {
@@ -1189,7 +1198,7 @@ body {
   overflow-x: auto;
 }
 
-.code-keyword { color: #5865F2; }
+.code-keyword { color: #3730A3; font-weight: 600; }
 .code-string { color: #5B8FC7; }
 .code-comment { color: #80848E; }
 

@@ -153,10 +153,10 @@ function initCodeCopy() {
       await navigator.clipboard.writeText(codeEl.innerText);
       const originalText = copyBtn.innerHTML;
       copyBtn.innerHTML = `
-        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: #5865F2">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: #312E81">
           <polyline points="20 6 9 17 4 12"></polyline>
         </svg>
-        <span style="color: #5865F2">Copied!</span>
+        <span style="color: #312E81">Copied!</span>
       `;
       setTimeout(() => {
         copyBtn.innerHTML = originalText;

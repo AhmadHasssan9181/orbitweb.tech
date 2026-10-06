@@ -107,13 +107,13 @@
       <svg class="hero-orbits" viewBox="0 0 980 980" fill="none" aria-hidden="true">
         <defs>
           <linearGradient id="ringG" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0" stop-color="#5865F2" stop-opacity="0.5"/>
-            <stop offset="1" stop-color="#5B8FC7" stop-opacity="0.05"/>
+            <stop offset="0" stop-color="#312E81" stop-opacity="0.35"/>
+            <stop offset="1" stop-color="#2563EB" stop-opacity="0.04"/>
           </linearGradient>
         </defs>
-        <g class="ring-a"><circle cx="490" cy="490" r="250" stroke="url(#ringG)" stroke-width="1.5" stroke-dasharray="4 8"/><circle cx="740" cy="490" r="9" fill="#5865F2"/><circle cx="740" cy="490" r="18" fill="#5865F2" fill-opacity="0.15"/></g>
-        <g class="ring-b"><circle cx="490" cy="490" r="370" stroke="url(#ringG)" stroke-width="1.5"/><circle cx="490" cy="120" r="7" fill="#5B8FC7"/><circle cx="490" cy="120" r="15" fill="#5B8FC7" fill-opacity="0.18"/></g>
-        <g class="ring-c"><circle cx="490" cy="490" r="480" stroke="url(#ringG)" stroke-width="1" stroke-dasharray="2 10"/><circle cx="150" cy="830" r="6" fill="#7C6CF5"/><circle cx="150" cy="830" r="13" fill="#7C6CF5" fill-opacity="0.18"/></g>
+        <g class="ring-a"><circle cx="490" cy="490" r="250" stroke="url(#ringG)" stroke-width="1.5" stroke-dasharray="4 8"/><circle cx="740" cy="490" r="9" fill="#312E81"/><circle cx="740" cy="490" r="18" fill="#312E81" fill-opacity="0.12"/></g>
+        <g class="ring-b"><circle cx="490" cy="490" r="370" stroke="url(#ringG)" stroke-width="1.5"/><circle cx="490" cy="120" r="7" fill="#2563EB"/><circle cx="490" cy="120" r="15" fill="#2563EB" fill-opacity="0.14"/></g>
+        <g class="ring-c"><circle cx="490" cy="490" r="480" stroke="url(#ringG)" stroke-width="1" stroke-dasharray="2 10"/><circle cx="150" cy="830" r="6" fill="#4338CA"/><circle cx="150" cy="830" r="13" fill="#4338CA" fill-opacity="0.14"/></g>
       </svg>
       <div class="container hero-grid">
         <!-- Left: Copy & CTAs -->
@@ -130,9 +130,9 @@
               <svg class="drawline-svg" viewBox="0 0 240 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                 <defs>
                   <linearGradient id="heroUnderlineGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-                    <stop offset="0%" stop-color="#5865F2" stop-opacity="0.2"/>
-                    <stop offset="60%" stop-color="#5865F2"/>
-                    <stop offset="100%" stop-color="#5B8FC7"/>
+                    <stop offset="0%" stop-color="#1E1B4B" stop-opacity="0.3"/>
+                    <stop offset="50%" stop-color="#312E81"/>
+                    <stop offset="100%" stop-color="#2563EB"/>
                   </linearGradient>
                 </defs>
                 <path class="drawline-path" d="M 4 18 C 65 6, 175 4, 236 12" stroke="url(#heroUnderlineGrad)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -551,7 +551,7 @@
             <div class="sim-box">
               <div class="sim-box-label">2. Homeserver Relay (Ciphertext)</div>
               <div id="sim-cipher-out" class="sim-output-box">m.megolm.v1:9f2c81:seq42:x8d1e</div>
-              <span style="font-size: 11px; color: #5865F2; font-weight: 600;">✓ Server reads only opaque ciphertext</span>
+              <span style="font-size: 11.5px; color: #312E81; font-weight: 600;">✓ Server reads only opaque ciphertext</span>
             </div>
 
             <!-- Divider Arrow -->
@@ -564,10 +564,10 @@
             <!-- Box 3: Recipient Decrypted Output -->
             <div class="sim-box">
               <div class="sim-box-label">3. Recipient Device (Decrypted)</div>
-              <div id="sim-decrypted-out" class="sim-output-box" style="background: #EEF2FF; color: #3C45A5; border: 1px solid #C7D2FE;">
+              <div id="sim-decrypted-out" class="sim-output-box" style="background: #EEF2FF; color: #1E1B4B; border: 1px solid #C7D2FE;">
                 Sovereign communications online.
               </div>
-              <span style="font-size: 11px; color: #5865F2; font-weight: 600;">✓ Verified identity signature match</span>
+              <span style="font-size: 11.5px; color: #312E81; font-weight: 600;">✓ Verified identity signature match</span>
             </div>
           </div>
 
