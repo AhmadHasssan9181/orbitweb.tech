@@ -1127,7 +1127,7 @@ body {
 }
 
 .comparison-table td.col-orbit {
-  background: rgba(88, 101, 242, 0.04);
+  background: rgba(49, 46, 129, 0.04);
   font-weight: 600;
   color: var(--text-main);
 }
@@ -1469,6 +1469,36 @@ body {
     padding: 10px 14px;
   }
 
+  .comparison-container {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .comparison-table {
+    min-width: 580px;
+  }
+
+  .crypto-simulator-card {
+    padding: 24px 18px;
+  }
+
+  .cta-banner-card {
+    padding: 48px 24px;
+  }
+
+  .cta-banner-title {
+    font-size: 28px;
+  }
+
+  .cta-banner-buttons {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .cta-banner-buttons .btn {
+    width: 100%;
+  }
+
   .footer-top {
     grid-template-columns: 1fr;
   }
@@ -1477,6 +1507,49 @@ body {
     flex-direction: column;
     gap: 16px;
     text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: clamp(28px, 8.5vw, 34px);
+  }
+
+  .hero-subtitle {
+    font-size: 15px;
+  }
+
+  .hero-cta-group {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .hero-cta-group .cta-item,
+  .hero-cta-group .btn {
+    width: 100%;
+  }
+
+  .cta-caption {
+    text-align: center;
+    padding-left: 0;
+  }
+
+  .stats-card {
+    border-radius: 18px;
+  }
+
+  .stat {
+    padding: 22px 16px;
+  }
+
+  .stat-num {
+    font-size: 34px;
+  }
+
+  .hero-trust-bar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
   }
 }
 
