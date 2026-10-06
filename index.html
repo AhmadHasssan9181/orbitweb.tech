@@ -32,10 +32,12 @@
 
   <!-- Stylesheet -->
   <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="styles/polish.css">
 </head>
 <body>
 
   <!-- Ambient Glow Background -->
+  <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
   <div class="bg-mesh-glow" aria-hidden="true"></div>
 
   <!-- Sticky Navigation Header -->
@@ -101,6 +103,17 @@
   <main>
     <!-- HERO SECTION -->
     <section class="section hero-section" id="hero">
+      <svg class="hero-orbits" viewBox="0 0 980 980" fill="none" aria-hidden="true">
+        <defs>
+          <linearGradient id="ringG" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#5865F2" stop-opacity="0.5"/>
+            <stop offset="1" stop-color="#5B8FC7" stop-opacity="0.05"/>
+          </linearGradient>
+        </defs>
+        <g class="ring-a"><circle cx="490" cy="490" r="250" stroke="url(#ringG)" stroke-width="1.5" stroke-dasharray="4 8"/><circle cx="740" cy="490" r="9" fill="#5865F2"/><circle cx="740" cy="490" r="18" fill="#5865F2" fill-opacity="0.15"/></g>
+        <g class="ring-b"><circle cx="490" cy="490" r="370" stroke="url(#ringG)" stroke-width="1.5"/><circle cx="490" cy="120" r="7" fill="#5B8FC7"/><circle cx="490" cy="120" r="15" fill="#5B8FC7" fill-opacity="0.18"/></g>
+        <g class="ring-c"><circle cx="490" cy="490" r="480" stroke="url(#ringG)" stroke-width="1" stroke-dasharray="2 10"/><circle cx="150" cy="830" r="6" fill="#7C6CF5"/><circle cx="150" cy="830" r="13" fill="#7C6CF5" fill-opacity="0.18"/></g>
+      </svg>
       <div class="container hero-grid">
         <!-- Left: Copy & CTAs -->
         <div class="hero-content">
@@ -315,6 +328,41 @@
               <span class="audio-bar"></span>
             </div>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STATS STRIP -->
+    <section class="container stats-strip" aria-label="Orbit at a glance">
+      <div class="stats-card reveal">
+        <div class="stat"><div class="stat-num">100%</div><div class="stat-label">Open source</div></div>
+        <div class="stat"><div class="stat-num">E2EE</div><div class="stat-label">Encrypted by default</div></div>
+        <div class="stat"><div class="stat-num">0</div><div class="stat-label">Trackers or ads</div></div>
+        <div class="stat"><div class="stat-num">3</div><div class="stat-label">Web, Desktop, Android</div></div>
+      </div>
+    </section>
+
+    <!-- TECH MARQUEE -->
+    <section class="marquee-section" aria-label="Built on open technology">
+      <div class="marquee-eyebrow">Built on open technology</div>
+      <div class="marquee reveal">
+        <div class="marquee-track">
+          <span class="tech-pill"><i class="tech-dot"></i>Matrix</span>
+          <span class="tech-pill"><i class="tech-dot"></i>Rust Crypto</span>
+          <span class="tech-pill"><i class="tech-dot"></i>LiveKit</span>
+          <span class="tech-pill"><i class="tech-dot"></i>WebRTC</span>
+          <span class="tech-pill"><i class="tech-dot"></i>Kotlin Multiplatform</span>
+          <span class="tech-pill"><i class="tech-dot"></i>Compose</span>
+          <span class="tech-pill"><i class="tech-dot"></i>React</span>
+          <span class="tech-pill"><i class="tech-dot"></i>Megolm</span>
+          <span class="tech-pill"><i class="tech-dot"></i>Matrix</span>
+          <span class="tech-pill"><i class="tech-dot"></i>Rust Crypto</span>
+          <span class="tech-pill"><i class="tech-dot"></i>LiveKit</span>
+          <span class="tech-pill"><i class="tech-dot"></i>WebRTC</span>
+          <span class="tech-pill"><i class="tech-dot"></i>Kotlin Multiplatform</span>
+          <span class="tech-pill"><i class="tech-dot"></i>Compose</span>
+          <span class="tech-pill"><i class="tech-dot"></i>React</span>
+          <span class="tech-pill"><i class="tech-dot"></i>Megolm</span>
         </div>
       </div>
     </section>

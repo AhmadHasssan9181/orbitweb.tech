@@ -186,3 +186,50 @@ function initActiveChannelSwitcher() {
     });
   });
 }
+
+/* -------------------------------------------------------------------------
+   7. Polish: scroll progress, reveal-on-scroll, card spotlight, hero tilt
+   ------------------------------------------------------------------------- */
+document.addEventListener('DOMContentLoaded', () => {
+  const bar = document.getElementById('scroll-progress');
+  if (bar) {
+    const upd = () => {
+      const h = document.documentElement.scrollHeight - window.innerHeight;
+      bar.style.width = (h > 0 ? (window.scrollY / h) * 100 : 0) + '%';
+    };
+    window.addEventListener('scroll', upd, { passive: true });
+    upd();
+  }
+
+  const targets = document.querySelectorAll(
+    '.section-header, .feature-card, .showcase-split > *, .crypto-simulator-card, .comparison-container, .code-preview-window, .faq-item, .cta-banner-card'
+  );
+  targets.forEach((el, i) => {
+    el.classList.add('reveal');
+    el.dataset.d = String((i % 3) + 1);
+  });
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  document.querySelectorAll('.feature-card').forEach(card => {
+    card.addEventListener('pointermove', (e) => {
+      const r = card.getBoundingClientRect();
+      card.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+      card.style.setProperty('--my', (e.clientY - r.top) + 'px');
+    });
+  });
+
+  const wrap = document.querySelector('.hero-mockup-wrapper');
+  const win = document.querySelector('.app-window');
+  if (wrap && win && window.matchMedia('(min-width: 1025px)').matches) {
+    wrap.addEventListener('pointermove', (e) => {
+      const r = wrap.getBoundingClientRect();
+      const x = (e.clientX - r.left) / r.width - 0.5;
+      const y = (e.clientY - r.top) / r.height - 0.5;
+      win.style.transform = `rotateY(${-6 + x * 8}deg) rotateX(${3 - y * 8}deg)`;
+    });
+    wrap.addEventListener('pointerleave', () => { win.style.transform = ''; });
+  }
+});
