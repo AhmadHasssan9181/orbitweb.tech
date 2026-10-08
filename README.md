@@ -34,7 +34,7 @@ cont603385.venus.orderbox-dns.com
 
 ## Features
 
-- **Element.io-Inspired Light Aesthetic:** Crisp typography, modern card layout, soft ambient glows, and clean borders.
+- **Futuristic Sovereign Clean Aesthetic:** Crisp typography, modern card layout, soft ambient glows, and clean borders.
 - **Custom Precision Vector SVGs:**
   - Animated underline headline accent on *"you're sovereign"*
   - Decentralized Matrix Federation Mesh Network with animated packets
