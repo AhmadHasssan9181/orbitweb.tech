@@ -1,0 +1,11 @@
+# Secrets & Service Accounts
+serviceAccountKey.json
+*-service-account*.json
+*.pem
+*.key
+.env
+.env.*
+
+# Node
+node_modules/
+npm-debug.log*
