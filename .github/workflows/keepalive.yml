@@ -1,0 +1,15 @@
+name: Keepalive Render Push Gateway
+
+on:
+  schedule:
+    # Run every 10 minutes to prevent Render free instance from spinning down
+    - cron: '*/10 * * * *'
+  workflow_dispatch:
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping Push Gateway Health Endpoint
+        run: |
+          curl -f -s -m 20 https://orbitweb-tech.onrender.com/health || true
